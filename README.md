@@ -28,13 +28,7 @@ $ git log
 
 ## Git enviar a repositorio remoto
 
-Agregar el repositorio remoto
 
-origin es el nombre arbitrario de el repositorio remoto...
-$ git remote add origin <url>
-
-Verificar que fue configurado con
-$ git remote -v
 
 "Empujar" los cambios de tu repositorio local
 al repositorio remoto
@@ -42,3 +36,12 @@ origin siendo el repositorio remoto y master la branch del mismo...
 $ git push origin master
 
 Git creará la branch master en caso de no existir en origin (Repo local)
+
+## Configurar el repositorio remoto
+Agregar el repositorio remoto
+
+origin es el nombre arbitrario de el repositorio remoto...
+$ git remote add origin <url>
+
+Verificar que fue configurado con
+$ git remote -v
