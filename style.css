@@ -22,3 +22,8 @@ input {
 hr {
   width: 95%;
 }
+
+#btn-clear-split-eq{
+ 
+  background-color: blueviolet;
+}

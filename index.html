@@ -1,116 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- CSS only -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>App Calculadora Propina SPLIT</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <div class="row row-header">
-          <div class="col-12">
-            <h1>PROPINA SPLIT</h1>
-          </div>
-        </div>
-        <div class="row row-header">
-          <div class="col-6 text-center selector" id="btn-split-eq">
-            Equal SPLIT
-          </div>
-          <div class="col-6 text-center selector" id="btn-split-cus">
-            Custom SPLIT
-          </div>
-        </div>
-        <div class="row row-header">
-          <div class="col-12">
-            <h2 id="section-title">PlaceHolder Title</h2>
-          </div>
-        </div>
-      </div>
-      <!--  -->
-      <div id="area-split-eq" style="display: none;">
-        <div class="row">
-          <div class="col-6"><p>Total de la Cuenta</p></div>
-          <div class="col-6">
-            <input
-              id="ipt-cuenta-eq"
-              type="number"
-              inputmode="number"
-              placeholder="$350.99"
-            />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6"><p>Procentaje Propina</p></div>
-          <div class="col-6">
-            <input
-              id="ipt-porcentaje-eq"
-              type="number"
-              inputmode="number"
-              placeholder="0.15"
-            />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6"><p>¿SPLIT entre cuántos?</p></div>
-          <div class="col-6">
-            <input
-              id="ipt-split-eq"
-              type="number"
-              inputmode="numeric"
-              placeholder="0"
-            />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <button id="btn-calc-split-eq" class="btn btn-primary">
-              Calcular!
-            </button>
-            <button id="btn-clear-split-eq" class="btn btn-danger">
-              Borrar
-            </button>
-          </div>
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col-12">
-            <h2 id="result-split-eq"></h2>
-          </div>
+<head>
+  <meta charset="UTF-8"></meta>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  ></meta>
+
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  ></meta>
+
+  <!-- CSS only -->
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  ></link>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  ></link>
+
+  <title>App Calculadora Propina SPLIT</title>
+</head>
+
+<body class="">
+  <div class="container">
+    <div class="header">
+      <div class="row row-header">
+        <div class="col-12">
+          <h1>PROPINA SPLIT</h1>
         </div>
       </div>
 
-      <!--  -->
-      <div id="area-split-cus" style="display: none;">
-        <div class="row">
-          <div class="col-6"><p>Total de la Cuenta</p></div>
-          <div class="col-6">
-            <input type="number" inputmode="numeric" placeholder="0.00" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6"><p>Procentaje Propina</p></div>
-          <div class="col-6">
-            <input type="number" inputmode="numeric" placeholder="0.00" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6"><p>Cantidad Arbitraria</p></div>
-          <div class="col-6">
-            <input type="number" inputmode="numeric" placeholder="0.00" />
-          </div>
+      <div class="row row-header">
+        <div
+          class="col-6 text-center selector"
+          id="btn-split-eq"
+        >Equal SPLIT</div>
+
+        <div
+          class="col-6 text-center selector"
+          id="btn-split-cus"
+        >Custom SPLIT</div>
+      </div>
+
+      <div class="row row-header">
+        <div class="col-12">
+          <h2 id="section-title">PlaceHolder Title</h2>
         </div>
       </div>
     </div>
-  </body>
-  <script src="main.js"></script>
+
+    <!-- AREA SPLIT EQUAL -->
+
+    <div
+      id="area-split-eq"
+      style="display: none;"
+    >
+      <div class="row">
+        <div class="col-6">
+          <p>Total de la Cuenta</p>
+        </div>
+
+        <div class="col-6">
+          <input
+            id="ipt-cuenta-eq"
+            type="number"
+            inputmode="number"
+            placeholder="$350.99"
+          ></input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <p>Procentaje Propina</p>
+        </div>
+
+        <div class="col-6">
+          <input
+            id="ipt-porcentaje-eq"
+            type="number"
+            inputmode="number"
+            placeholder="0.15"
+          ></input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <p>¿SPLIT Entre Cuántos?</p>
+        </div>
+
+        <div class="col-6">
+          <input
+            id="ipt-split-eq"
+            type="number"
+            inputmode="numeric"
+            placeholder="0"
+          ></input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <button
+            id="btn-calc-split-eq"
+            class="btn btn-primary"
+          >Calcular!</button>
+
+          <button
+            id="btn-clear-split-eq"
+            class="btn btn-danger"
+          >Borrar</button>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-12">
+          <h2 id="result-split-eq"></h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- AREA SPLIT CUSTOM -->
+
+    <div
+      id="area-split-cus"
+      style="display: none;"
+    >
+      <div class="row">
+        <div class="col-6">
+          <p>Total de la Cuenta</p>
+        </div>
+
+        <div class="col-6">
+          <input
+            id="ipt-cuenta-cus"
+            type="number"
+            inputmode="number"
+            placeholder="$350.99"
+          ></input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <p>Procentaje Propina</p>
+        </div>
+
+        <div class="col-6">
+          <input
+            id="ipt-porcentaje-cus"
+            type="number"
+            inputmode="number"
+            placeholder="0.15"
+          ></input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <p>¿SPLIT Entre Cuántos?</p>
+        </div>
+
+        <div class="col-6">
+          <input
+          id="ipt-split-cus"
+            type="number"
+            inputmode="numeric"
+            placeholder="0"
+          ></input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <button
+            id="btn-setup-split-cus"
+            class="btn btn-success"
+          >Ingresar Cantidades!</button>
+
+          <button
+            id="btn-clear-split-cus"
+            class="btn btn-danger"
+          >Borrar</button>
+        </div>
+      </div>
+
+      <hr>
+<!-- ZONA DE INPUTS GENERADOS -->
+      <div id="contiene-split-custom">
+        
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-12">
+          <h2 id="result-split-cus"></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="main.js"></script>
 </html>
