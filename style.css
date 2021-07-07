@@ -1,11 +1,16 @@
+.container{
+  width: 95%;
+}
+
 .header {
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .selector {
   box-sizing: border-box;
   border: 1px solid black;
-  padding: 10px;
-  width: 50%;
+  padding: 5px;
+  width: 49%;
 }
 .highlight {
   color: white;
@@ -15,6 +20,14 @@
 .row-header {
   margin-bottom: 15px;
 }
+
+.controls{
+display: flex;
+justify-content: space-around;
+
+}
+
+
 input {
   width: 95%;
 }
@@ -23,7 +36,3 @@ hr {
   width: 95%;
 }
 
-#btn-clear-split-eq{
- 
-  background-color: blueviolet;
-}

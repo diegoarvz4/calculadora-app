@@ -22,10 +22,13 @@ const inputPorcentajeCustom = document.getElementById("ipt-porcentaje-cus");
 const inputSplitCustom = document.getElementById("ipt-split-cus");
 
 const botónSetupCustomSplit = document.getElementById("btn-setup-split-cus");
-const botónBorrarCustomSplit = document.getElementById("btn-clear-split-eq");
+const botónBorrarCustomSplit = document.getElementById("btn-clear-split-cus");
+var botónCálculoCustomSplit;
 
 var totalPropinaEqual = "0";
 var totalPropinaCustom = "0";
+
+var comensalesConformes = "0";
 
 
 
@@ -79,27 +82,21 @@ botónBorrarIgualSplit.onclick = function () {
 //ACTION SPLIT CUSTOM////////////////////////////////
 botónSetupCustomSplit.onclick = function(){
 
-totalPropinaCustom = inputCuentaCustom.value * inputPorcentajeCustom.value;
-
-resultadoCustomSplit.innerHTML = `
-
-  Propina Total: $ ${totalPropinaCustom}
-  <br>  
-  Por Persona: $ ${
-    totalPropinaCustom / inputSplitCustom.value
-  }
-`;
-
-divCustom.innerHTML = "";
-
 
 // Crear cierta cantidad de bloques de input de acuerdo
 // al número ingresado en "¿SPLIT entre cuántos?"
 // y
 //// Agregar id's "secuenciales" a dichos inputs
+divCustom.innerHTML = "";
+
+totalPropinaCustom = inputCuentaCustom.value * inputPorcentajeCustom.value ;
+
+divCustom.insertAdjacentHTML("afterbegin", `
+<h2>Propina total: $${totalPropinaCustom}</h2>
+
+`);
+
 for (let i=0; i < inputSplitCustom.value; i++){
-
-
   
 divCustom.insertAdjacentHTML('beforeend', `
 
@@ -120,17 +117,90 @@ divCustom.insertAdjacentHTML('beforeend', `
 `);
 }
 
+
+
 divCustom.insertAdjacentHTML("beforeend",`
 
 <div class="row">
   <div class="col-6">
-  <button class ="btn btn-info">Calcular!</button>
+  <button class ="btn btn-info" id="btn-calc-split-cus">Calcular!</button>
   </div>
 </div>
 
 `);
 
+
+botónCálculoCustomSplit = document.getElementById("btn-calc-split-cus");
+
+botónCálculoCustomSplit.onclick = function(){
+comensalesConformes = 0;
+  resultadoCustomSplit.innerHTML = "";
+
+  totalPropinaCustom = inputCuentaCustom.value * inputPorcentajeCustom.value ;
+
+
+
+  for(let j=0;j < inputSplitCustom.value; j++){
+
+if(document.getElementById("ipt-cus-"+(j+1)).value != "" || document.getElementById("ipt-cus-"+(j+1)).value != 0){
+//Si el valor de determinado input es diferente de nada o 0,
+//-Registro su "número de comensal"
+//-Resto del total el valor de dicho input
+  resultadoCustomSplit.insertAdjacentHTML("beforeend", `
+  
+  Comensal ${j+1} : $ ${document.getElementById("ipt-cus-"+(j+1)).value}
+  <br>
+  
+  `)
+
+  totalPropinaCustom = totalPropinaCustom-document.getElementById("ipt-cus-"+(j+1)).value;
+
+}    
+
+if (document.getElementById("ipt-cus-"+(j+1)).value === "" || document.getElementById("ipt-cus-"+(j+1)).value === "0"){
+//Si no hay valor en cierto input, suma a una variable que utilizaremos después
+//para calcular la partes proporcionales del resto.
+  comensalesConformes ++;
+  
+}
+
+}
+
+if(comensalesConformes == inputSplitCustom.value){
+//Si todos los inputs estaban vacíos, implica que el cálculo se hace proporcionalmente
+  console.log("Todos los comensales conformes: calcular partes iguales");
+
+  resultadoCustomSplit.insertAdjacentHTML("afterbegin",`
+  Partes iguales de: $${ totalPropinaCustom / inputSplitCustom.value}
+  
+  `);
+}
+
+ resultadoCustomSplit.insertAdjacentHTML("beforeend",`
+<span style="color:red">Restante: $${totalPropinaCustom}</span>`);
+
+  
+ 
+  
 }
 
 
-// Declarar variables "secuenciales" a dichos inputs
+}
+
+
+
+
+
+
+
+
+botónBorrarCustomSplit.onclick = function(){
+
+inputCuentaCustom.value = "";
+inputPorcentajeCustom.value = "";
+inputSplitCustom.value = "";
+
+divCustom.innerHTML = "";
+resultadoCustomSplit.innerHTML = "";
+
+}
