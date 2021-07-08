@@ -30,10 +30,8 @@ var totalPropinaCustom = "0";
 
 var comensalesConformes = "0";
 
+textoSección.innerHTML = "";
 
-
-
-textoSección.innerHTML = "Elige un tipo de cálculo...";
 //ACTION SELECT MODE////////////////////////////////////
 
 botónIgualSplit.onclick = function () {
@@ -88,6 +86,8 @@ botónSetupCustomSplit.onclick = function(){
 // y
 //// Agregar id's "secuenciales" a dichos inputs
 divCustom.innerHTML = "";
+resultadoCustomSplit.innerHTML = "";
+
 
 totalPropinaCustom = inputCuentaCustom.value * inputPorcentajeCustom.value ;
 
@@ -109,7 +109,7 @@ divCustom.insertAdjacentHTML('beforeend', `
               id="ipt-cus-${i+1}"
               type="number"
               inputmode="number"
-              placeholder="$100.00"
+              placeholder="$${totalPropinaCustom/inputSplitCustom.value}"
             ></input>
           </div>
         </div>
@@ -121,7 +121,7 @@ divCustom.insertAdjacentHTML('beforeend', `
 
 divCustom.insertAdjacentHTML("beforeend",`
 
-<div class="row">
+<div class="row botones-cus">
   <div class="col-6">
   <button class ="btn btn-info" id="btn-calc-split-cus">Calcular!</button>
   </div>
@@ -132,9 +132,12 @@ divCustom.insertAdjacentHTML("beforeend",`
 
 botónCálculoCustomSplit = document.getElementById("btn-calc-split-cus");
 
+////CÁLCULOS COMPLEJOS
+
 botónCálculoCustomSplit.onclick = function(){
+
 comensalesConformes = 0;
-  resultadoCustomSplit.innerHTML = "";
+resultadoCustomSplit.innerHTML = "";
 
   totalPropinaCustom = inputCuentaCustom.value * inputPorcentajeCustom.value ;
 
@@ -155,6 +158,8 @@ if(document.getElementById("ipt-cus-"+(j+1)).value != "" || document.getElementB
 
   totalPropinaCustom = totalPropinaCustom-document.getElementById("ipt-cus-"+(j+1)).value;
 
+  
+
 }    
 
 if (document.getElementById("ipt-cus-"+(j+1)).value === "" || document.getElementById("ipt-cus-"+(j+1)).value === "0"){
@@ -162,9 +167,21 @@ if (document.getElementById("ipt-cus-"+(j+1)).value === "" || document.getElemen
 //para calcular la partes proporcionales del resto.
   comensalesConformes ++;
   
+  
 }
 
 }
+//Final del FOR
+
+for(let k=0; k<inputSplitCustom.value; k++){
+  if (document.getElementById("ipt-cus-"+(k+1)).value === "" || document.getElementById("ipt-cus-"+(k+1)).value === "0"){
+
+    document.getElementById("ipt-cus-"+(k+1)).setAttribute("placeholder",`$${totalPropinaCustom/comensalesConformes}
+    `);
+
+  }
+}
+//Final del FOR
 
 if(comensalesConformes == inputSplitCustom.value){
 //Si todos los inputs estaban vacíos, implica que el cálculo se hace proporcionalmente
@@ -177,6 +194,7 @@ if(comensalesConformes == inputSplitCustom.value){
 }
 
  resultadoCustomSplit.insertAdjacentHTML("beforeend",`
+<hr>
 <span style="color:red">Restante: $${totalPropinaCustom}</span>`);
 
   
@@ -193,7 +211,7 @@ if(comensalesConformes == inputSplitCustom.value){
 
 
 
-
+//BOTón BORRAR
 botónBorrarCustomSplit.onclick = function(){
 
 inputCuentaCustom.value = "";

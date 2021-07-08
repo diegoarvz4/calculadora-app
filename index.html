@@ -27,7 +27,9 @@
     href="style.css"
   ></link>
 
-  <title>App Calculadora Propina SPLIT</title>
+  <script src="https://kit.fontawesome.com/0a8f473504.js" crossorigin="anonymous"></script>
+
+  <title>SPLIT-TIP | Tu calculadora de propinas.</title>
 </head>
 
 <body class="">
@@ -35,7 +37,9 @@
     <div class="header">
       <div class="row row-header">
         <div class="col-12">
-          <h1>PROPINA SPLIT</h1>
+          <h1 class="encabezado"><i class="fas fa-money-check-alt"></i>  SPLIT-TIP</h1>
+          <h5 class="tagline">Tu calculadora de propinas.</h5>
+          <hr>
         </div>
       </div>
 
@@ -53,7 +57,7 @@
 
       <div class="row row-header">
         <div class="col-12">
-          <h2 id="section-title">PlaceHolder Title</h2>
+          <h2 id="section-title">Algo salió mal...</h2>
         </div>
       </div>
     </div>
@@ -109,20 +113,20 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row botones-eq">
         <div class="col-12">
+          <button
+            id="btn-clear-split-eq"
+            class="btn btn-danger"
+          >Borrar</button>
           <button
             id="btn-calc-split-eq"
             class="btn btn-primary"
           >Calcular!</button>
 
-          <button
-            id="btn-clear-split-eq"
-            class="btn btn-danger"
-          >Borrar</button>
+          
         </div>
       </div>
-
       <hr>
 
       <div class="row">
@@ -183,17 +187,18 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row botones-cus">
         <div class="col-12">
+          <button
+            id="btn-clear-split-cus"
+            class="btn btn-danger"
+          >Borrar</button>
           <button
             id="btn-setup-split-cus"
             class="btn btn-success"
           >Yo pongo tanto:</button>
 
-          <button
-            id="btn-clear-split-cus"
-            class="btn btn-danger"
-          >Borrar</button>
+          
         </div>
       </div>
 

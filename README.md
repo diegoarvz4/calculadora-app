@@ -33,6 +33,7 @@ $ git log
 "Empujar" los cambios de tu repositorio local
 al repositorio remoto
 origin siendo el repositorio remoto y master la branch del mismo...
+
 $ git push origin master
 
 Git creará la branch master en caso de no existir en origin (Repo local)
